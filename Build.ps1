@@ -5,8 +5,9 @@ $distPath = Join-Path $PSScriptRoot 'dist'
 New-Item -ItemType Directory -Path $distPath -Force | Out-Null
 $sourcePath = Join-Path $PSScriptRoot 'src/ChatStatus.cs'
 $stripPath = Join-Path $PSScriptRoot 'src/TaskbarStrip.cs'
+$inboxPath = Join-Path $PSScriptRoot 'src/CompletionInbox.cs'
 $outputPath = Join-Path $distPath 'ChatStatus.exe'
-& $compiler /nologo /target:winexe /optimize+ /r:System.Windows.Forms.dll /r:System.Drawing.dll /r:System.Web.Extensions.dll "/out:$outputPath" $sourcePath $stripPath
+& $compiler /nologo /target:winexe /optimize+ /r:System.Windows.Forms.dll /r:System.Drawing.dll /r:System.Web.Extensions.dll "/out:$outputPath" $sourcePath $stripPath $inboxPath
 if ($LASTEXITCODE -ne 0) { throw 'Build failed' }
 Copy-Item -LiteralPath (Join-Path $PSScriptRoot 'README.md'),(Join-Path $PSScriptRoot 'LICENSE') -Destination $distPath -Force
 Write-Output "Built: $outputPath"
