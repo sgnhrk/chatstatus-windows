@@ -1,0 +1,11 @@
+/dist/
+/data/
+**/data/
+*.exe
+*.zip
+preview.png
+taskbar-preview.png
+taskbar-layout.txt
+test-results.txt
+*.tmp
+*.bak
